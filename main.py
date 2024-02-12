@@ -7,6 +7,7 @@ import re
 def validate_email(func):
     """Wrapper function to validate email and handle errors."""
 
+    @wraps(func)
     def inner(args: tuple, contacts_dict: dict):
         if not re.match(r"^[\w\.-]+@[\w\.-]+\.[a-zA-Z]{2,}$", args[1]):
             print("Error: Second argument must be a valid email address.")

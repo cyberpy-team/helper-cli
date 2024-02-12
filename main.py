@@ -1,6 +1,19 @@
 """Tools for working with functions and callable objects"""
 
 from functools import wraps
+import re
+
+
+def validate_email(func):
+    """Wrapper function to validate email and handle errors."""
+
+    def inner(args: tuple, contacts_dict: dict):
+        if not re.match(r"^[\w\.-]+@[\w\.-]+\.[a-zA-Z]{2,}$", args[1]):
+            print("Error: Second argument must be a valid email address.")
+            return
+        return func(args, contacts_dict)
+
+    return inner
 
 
 def input_error(func):
@@ -95,6 +108,8 @@ def main():
     It creates an empty contacts dictionary and then enters a loop to interact with the user.
     The user can enter different commands, and the program responds accordingly."""
     contacts = {}
+    e_contacts = {}
+    tasks = {}
     print("Welcome to the assistant bot!")
     while True:
         user_input = input("Enter a command: ")

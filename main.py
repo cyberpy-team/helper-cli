@@ -102,6 +102,13 @@ def get_contact(args: tuple, contacts: dict) -> str:
     :rtype: str
     """
     return contacts[args[0]]
+# This part of code used to add email independently for new or existing user in dict. e_contacts
+@validate_email                                                 
+@input_error                                                     
+def add_email (args: tuple, contacts: dict)-> str:
+    name, email = args
+    contacts[name]= email
+    return "Email added"
 
 
 def main():
@@ -129,6 +136,8 @@ def main():
                 print(change_contact(args, contacts))
             case "phone":
                 print(get_contact(args, contacts))
+            case "email":
+                print(add_email(args,e_contacts))
             case "all":
                 if not contacts:
                     print("No saved contacts, wanna add some?")

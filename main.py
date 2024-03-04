@@ -110,10 +110,10 @@ def add_email (args: tuple, contacts: dict)-> str:
     contacts[name]= email
     return "Email added"
 
-def printing(dic:dict):
+def printing(dic:dict) -> None:
     for name, email in dic.items():
         print(f"For {name} is e-mail: {email}")
-    return dic    
+        
 
 
 def main():

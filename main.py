@@ -110,6 +110,11 @@ def add_email (args: tuple, contacts: dict)-> str:
     contacts[name]= email
     return "Email added"
 
+def printing(dic:dict):
+    for name, email in dic.items():
+        print(f"For {name} is e-mail: {email}")
+    return dic    
+
 
 def main():
     """main This code defines a main function that serves as the entry point of a program.
@@ -138,6 +143,11 @@ def main():
                 print(get_contact(args, contacts))
             case "email":
                 print(add_email(args,e_contacts))
+            case "mailing":
+                if not e_contacts:
+                    print("I haven't any contact's email")
+                else:
+                    printing(e_contacts)
             case "all":
                 if not contacts:
                     print("No saved contacts, wanna add some?")
